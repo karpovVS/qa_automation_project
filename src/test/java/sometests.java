@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.*;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.conditions.ExactText;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.CompareGenerator;
@@ -12,9 +13,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class sometests {
 
-    public static void main(String[] args) {
+    @Test
+    @DisplayName("Positive test")
+    void positiveTest() {
         open("https://market.yandex.ru/");
 
         $("#header-search").val("холодильник").pressEnter();
         $$(".link.n-link_theme_blue.link_type_cpc").get(1).click();
         $("body").shouldHave(text("холодильник"));
+    }}
