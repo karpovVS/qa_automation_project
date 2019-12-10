@@ -10,6 +10,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.util.CompareGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import sun.awt.X11.XQueryTree;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import javax.swing.*;
 import javax.xml.xpath.XPathExpression;
@@ -19,10 +20,12 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SomeTests2 {
+    Dotenv dotenv = Dotenv.load();
 
     @Test
     @DisplayName("Positive test")
     void positiveTest1() {
+
         Configuration.browser = Browsers.FIREFOX;
         open("https://www.google.com/");
         $(byName("q")).setValue("ситилинк купить HDD").pressEnter();
@@ -35,10 +38,10 @@ public class SomeTests2 {
      @Test
      @DisplayName("Positive test")
      void positiveTest2() {
-         Configuration.browser = Browsers.FIREFOX;
+//         Configuration.browser = Browsers.FIREFOX;
         open("https://passport.yandex.ru/auth");
-        $("#passp-field-login").setValue("aristarkhignatov").pressEnter();
-        $(byName("passwd")).setValue("23df12ghirud^&j*").pressEnter();
+        $("#passp-field-login").setValue(dotenv.get("USER_NAME")).pressEnter();
+        $(byName("passwd")).setValue(dotenv.get("PASSWORD_YA")).pressEnter();
 //        $(byCssSelector("#root > div > div > div.passp-flex-wrapper > div > div.passp-auth > div.passp-auth-content > div.passp-route-forward > div > form > div:nth-child(3) > button")).click();
 //        $(byCssSelector("#root > div > div.dheader > div.dheader-user > div > div > a.user-account.user-account_has-accent-letter_yes.user2__current-account")).click();
          $("a.user2__current-account").click();

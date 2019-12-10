@@ -16,4 +16,5 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
     compile 'org.javassist:javassist:3.18.1-GA'
+    compile 'io.github.cdimascio:java-dotenv:5.1.3'
 }
